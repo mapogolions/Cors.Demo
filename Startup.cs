@@ -28,7 +28,13 @@ namespace Cors.Demo
                 app.UseDeveloperExceptionPage();
             }
             app.UseCors();
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(configureRoutes => {
+                configureRoutes.MapRoute(
+                    name: "DefaultRoute",
+                    template: "{controller}/{action}",
+                    defaults: new { controller = "HappyNewYear", action = "HowLongUntilNewYear" }
+                );
+            });
         }
     }
 }
