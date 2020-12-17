@@ -15,7 +15,7 @@ namespace Cors.Demo
                 corsOptions.AddDefaultPolicy(configurePolicy =>
                 {
                     configurePolicy
-                        .WithOrigins("https://www.google.com")
+                        .WithOrigins("https://www.google.com", "https://yandex.ru", "https://github.com/")
                         .WithHeaders("Content-Type");
                 });
             });

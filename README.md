@@ -16,3 +16,6 @@ fetch('http://localhost:5000', { headers: { "Content-Type": "application/json" }
     .then(console.log)
     .catch(console.error);
 ```
+
+#### Pitfails
+- If a resource set the `Content-Security-Policy` header, like [yandex](https://yandex.ru) or (github)(https://github.com)
