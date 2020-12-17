@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -7,6 +8,10 @@ namespace Cors.Demo
 {
     public class Startup
     {
+        private readonly IConfiguration _config;
+
+        public Startup(IConfiguration config) => _config = config;
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(mvcOptions => mvcOptions.EnableEndpointRouting = false);
@@ -15,7 +20,7 @@ namespace Cors.Demo
                 corsOptions.AddDefaultPolicy(configurePolicy =>
                 {
                     configurePolicy
-                        .WithOrigins("https://www.google.com", "https://yandex.ru", "https://github.com/")
+                        .WithOrigins(_config.GetSection("AllowedCorsOrigins").Get<string[]>())
                         .WithHeaders("Content-Type");
                 });
             });
