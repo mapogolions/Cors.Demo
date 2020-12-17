@@ -18,4 +18,4 @@ fetch('http://localhost:5000', { headers: { "Content-Type": "application/json" }
 ```
 
 #### Pitfails
-- If a resource set the `Content-Security-Policy` header, like [yandex](https://yandex.ru) or (github)(https://github.com)
+- If a resource set the `Content-Security-Policy` header, like [yandex](https://yandex.ru) or [github](https://github.com)
