@@ -21,7 +21,7 @@ namespace Cors.Demo
                 {
                     configurePolicy
                         .WithOrigins(_config.GetSection("AllowedCorsOrigins").Get<string[]>())
-                        .WithHeaders("Content-Type");
+                        .WithHeaders(_config.GetSection("AllowedRequestHeaders").Get<string[]>());
                 });
             });
         }

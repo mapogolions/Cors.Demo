@@ -11,11 +11,20 @@ fetch('http://localhost:5000')
     .then(console.log)
     .catch(console.error);
 
-fetch('http://localhost:5000', { headers: { "Content-Type": "application/json" } })
+fetch('http://localhost:5000', {
+    headers: { "Content-Type": "application/json", "X-Allowed-Custom-Header": "" }
+})
+    .then(payload => payload.text())
+    .then(console.log)
+    .catch(console.error);
+
+fetch('http://localhost:5000', {
+    headers: { "Content-Type": "application/json", "X-Unknown-Custom-Header": "" }
+})
     .then(payload => payload.text())
     .then(console.log)
     .catch(console.error);
 ```
 
-#### Pitfails
+#### Pitfalls
 - If a resource set the `Content-Security-Policy` header, like [yandex](https://yandex.ru) or [github](https://github.com)
